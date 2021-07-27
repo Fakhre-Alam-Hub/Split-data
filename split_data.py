@@ -5,7 +5,7 @@ from PIL import Image
 
 def split_data():
     '''Function to split data for image segmentation'''
-
+    
     # chnaging pwd to data folder
     %cd /content/drive/MyDrive/Dataset/aug_data
 
@@ -14,7 +14,8 @@ def split_data():
     MASK_PATH = os.path.join(DATA_PATH, 'masks')
 
     # Create folders to hold images and masks
-    folders = ['train_images', 'train_masks', 'val_images', 'val_masks', 'test_images', 'test_masks']
+    folders = ['train_images/train', 'train_masks/train', 'val_images/val', 
+           'val_masks/val', 'test_images/test', 'test_masks/test']
 
     for folder in folders:
         os.makedirs(DATA_PATH + folder)
@@ -52,11 +53,11 @@ def split_data():
         img.save(DATA_PATH+'/{}'.format(dir_name)+'/'+image)
 
     
-    image_folders = [(train_images, 'train_images'), (val_images, 'val_images'), 
-                    (test_images, 'test_images')]
+    image_folders = [(train_images, 'train_images/train'), (val_images, 'val_images/val'), 
+                    (test_images, 'test_images/test')]
 
-    mask_folders = [(train_masks, 'train_masks'), (val_masks, 'val_masks'), 
-                    (test_masks, 'test_masks')]
+    mask_folders = [(train_masks, 'train_masks/train'), (val_masks, 'val_masks/val'), 
+                    (test_masks, 'test_masks/test')]
 
     # Add frames
     for folder in image_folders:
